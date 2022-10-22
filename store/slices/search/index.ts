@@ -3,12 +3,12 @@ import type { RootState } from "../../store";
 import { IRepositories } from "./types";
 import axios from "axios";
 
-interface SearchState {
+export interface SearchState {
   repositories: IRepositories | undefined;
   page: number;
   perPage: 10 | 20 | 50 | 100;
   order: "desc" | "asc";
-  sort: "stars" | "forks" | "updated" | null;
+  sort?: "stars" | "forks" | "updated";
   selectedLanguage: string;
   searchValue: string;
   status: "loading" | "failed" | "idle";
@@ -18,7 +18,6 @@ const initialState: SearchState = {
   page: 1,
   perPage: 20,
   order: "desc",
-  sort: null,
   repositories: undefined,
   status: "idle",
   selectedLanguage: "javascript",
@@ -39,14 +38,14 @@ export const fetchRepositories = createAsyncThunk(
         page: state.search.page,
         per_page: state.search.perPage,
         order: state.search.order,
-        sort: state.search.sort && state.search.sort,
+        sort: state.search.sort,
       },
     });
     return data;
   }
 );
 
-export const searchSlice = createSlice({
+const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
