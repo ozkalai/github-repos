@@ -15,7 +15,7 @@ export interface SearchState {
 }
 
 const initialState: SearchState = {
-  page: 1,
+  page: 5,
   perPage: 20,
   order: "desc",
   repositories: undefined,
@@ -50,7 +50,6 @@ const searchSlice = createSlice({
   initialState,
   reducers: {
     setLanguage: (state, action) => {
-      console.log(action.payload);
       state.selectedLanguage = action.payload;
     },
     setSearchValue: (state, action) => {

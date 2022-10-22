@@ -33,8 +33,7 @@ describe("userSlice", () => {
         } as UserState,
       } as RootState;
 
-      const mck = await fetchUserData()(dispatch, () => state, null);
-      console.log(mck);
+      await fetchUserData()(dispatch, () => state, null);
 
       const { calls } = dispatch.mock;
 

@@ -9,15 +9,16 @@ import { fetchUserData } from "../store/slices/user";
 import {
   setLanguage,
   setSearchValue,
-  setPage,
   setPerPage,
-  setOrder,
-  setSort,
 } from "../store/slices/search";
 import Login from "../ui/containers/Login";
 import Header from "../ui/components/Header";
 import styles from "../styles/Home.module.css";
 import { fetchRepositories } from "../store/slices/search";
+import LanguageRadioGroup from "../ui/components/LanguageRadioGroup";
+import Pagination from "../ui/components/Pagination";
+import Repositories from "../ui/containers/Repositories";
+import Input from "../ui/components/Input";
 
 const Home: NextPage = () => {
   const { query } = useRouter();
@@ -70,6 +71,14 @@ const Home: NextPage = () => {
       {user ? (
         <div>
           <Header />
+          <LanguageRadioGroup
+            options={[
+              { value: "javascript", label: "Javascript" },
+              { value: "scala", label: "Scala" },
+              { value: "python", label: "Python" },
+            ]}
+          />
+          <Input />
           <div
             style={{
               display: "flex",
@@ -79,62 +88,9 @@ const Home: NextPage = () => {
             }}
             className={styles.header}
           >
-            <h1>Repos</h1>
-            <div>Selected Language: {selectedLanguage}</div>
-            <div>Search Value: {searchValue}</div>
-            <div>page: {page} </div>
-            <div>perPage: {perPage} </div>
-            <div>order: {order} </div>
-            <div>sort: {sort} </div>
-
-            <form>
-              <input
-                onChange={(e) => dispatch(setLanguage(e.target.value))}
-                type="radio"
-                name="language"
-                value="javascript"
-              />
-              <label htmlFor="javascript">Javascript</label>
-
-              <input
-                onChange={(e) => dispatch(setLanguage(e.target.value))}
-                type="radio"
-                name="language"
-                value="scala"
-              />
-              <label htmlFor="scala">Scala</label>
-
-              <input
-                onChange={(e) => dispatch(setLanguage(e.target.value))}
-                type="radio"
-                name="language"
-                value="python"
-              />
-              <label htmlFor="python">Python</label>
-
-              <input
-                onChange={(e) => dispatch(setSearchValue(e.target.value))}
-                type="text"
-                name="search"
-              />
-              <div>
-                <label htmlFor="page">per page</label>
-                <select
-                  onChange={(e) => dispatch(setPerPage(Number(e.target.value)))}
-                >
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select>
-              </div>
-            </form>
-            {repositories?.items.map((repo) => (
-              <div key={repo.id}>
-                <a href={repo.html_url}>{repo.name}</a>
-              </div>
-            ))}
+            <Repositories />
           </div>
+          <Pagination />
         </div>
       ) : (
         <Login />
