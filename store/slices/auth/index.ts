@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 
-interface AuthState {
+export interface AuthState {
   token: string | undefined;
 }
 
@@ -10,7 +10,7 @@ const initialState: AuthState = {
   token: undefined,
 };
 
-export const counterSlice = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -20,8 +20,8 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { setToken } = counterSlice.actions;
+export const { setToken } = authSlice.actions;
 
 export const getToken = (state: RootState) => state.auth.token;
 
-export default counterSlice.reducer;
+export default authSlice.reducer;

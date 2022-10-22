@@ -52,6 +52,4 @@ export const userSlice = createSlice({
 
 export const { setUser } = userSlice.actions;
 
-export const getToken = (state: RootState) => state.auth.token;
-
 export default userSlice.reducer;

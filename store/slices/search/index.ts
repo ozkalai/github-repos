@@ -93,6 +93,4 @@ export const {
   setSort,
 } = searchSlice.actions;
 
-export const getToken = (state: RootState) => state.auth.token;
-
 export default searchSlice.reducer;
