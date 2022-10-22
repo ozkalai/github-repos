@@ -3,7 +3,7 @@ import type { RootState } from "../../store";
 import { IUser } from "./types";
 import axios from "axios";
 
-interface UserState {
+export interface UserState {
   user: IUser | undefined;
   status: "loading" | "failed" | "idle";
 }
@@ -28,7 +28,7 @@ export const fetchUserData = createAsyncThunk(
   }
 );
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
