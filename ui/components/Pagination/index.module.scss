@@ -3,6 +3,9 @@
   gap: 0.4rem;
   padding: 1rem 1rem 3rem 1rem;
   justify-content: flex-end;
+  @media (max-width: 768px) {
+    gap: 0.2rem;
+  }
 }
 
 .buttonWrapper {
@@ -10,6 +13,9 @@
   gap: 0.4rem;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    gap: 0.2rem;
+  }
 }
 
 .button {
@@ -31,6 +37,10 @@
     background-color: var(--secondary-color);
     color: var(--primary-color);
   }
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
 }
 
 .select {
@@ -46,6 +56,11 @@
   cursor: pointer;
   &:hover {
     border-color: var(--secondary-color);
+  }
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
   }
 }
 
