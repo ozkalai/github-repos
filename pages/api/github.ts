@@ -19,11 +19,13 @@ export default async function handler(
     const token = data.split("&")[0].split("=")[1];
     if (token) {
       res.redirect("/?token=" + token);
+      return;
     } else {
       res.status(401).json({ message: "Unauthorized" });
+      return;
     }
   } else {
     res.status(400).json({ message: "Bad Request" });
+    return;
   }
-  res.status(200).json({ name: req.query });
 }
