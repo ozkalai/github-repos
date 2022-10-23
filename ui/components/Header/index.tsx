@@ -12,40 +12,42 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <span className={styles.logo}>Repo Search</span>
-      <div className={styles.user}>
-        <div className={styles.userWrapper}>
-          <div className={styles.imageWrapper}>
-            <img
-              className={styles.image}
-              alt="avatar"
-              src={user?.avatar_url || ""}
-            />
-          </div>
-          <div className={styles.userInfo}>
-            <span className={styles.userInfoName}>{user?.name}</span>
-            <a
-              className={styles.userInfoLogin}
-              rel="noreferrer"
-              target="_blank"
-              href={user?.html_url}
-            >
-              @{user?.login}
-            </a>
-          </div>
-        </div>
-        {user && (
-          <div className={styles.logout}>
-            <div
-              onClick={() => {
-                dispatch(setToken(undefined));
-                dispatch(setUser(null));
-              }}
-            >
-              <IconLogout />
+      {user && (
+        <div className={styles.user}>
+          <div className={styles.userWrapper}>
+            <div className={styles.imageWrapper}>
+              <img
+                className={styles.image}
+                alt="avatar"
+                src={user?.avatar_url || ""}
+              />
+            </div>
+            <div className={styles.userInfo}>
+              <span className={styles.userInfoName}>{user?.name}</span>
+              <a
+                className={styles.userInfoLogin}
+                rel="noreferrer"
+                target="_blank"
+                href={user?.html_url}
+              >
+                @{user?.login}
+              </a>
             </div>
           </div>
-        )}
-      </div>
+          {user && (
+            <div className={styles.logout}>
+              <div
+                onClick={() => {
+                  dispatch(setToken(undefined));
+                  dispatch(setUser(null));
+                }}
+              >
+                <IconLogout />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 };
