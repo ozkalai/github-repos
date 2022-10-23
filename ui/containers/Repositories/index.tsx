@@ -3,10 +3,12 @@ import {
   IconArrowUp,
   IconFilter,
   IconExternalLink,
+  IconActivity,
 } from "@tabler/icons";
 import dayjs from "dayjs";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setSort, setOrder } from "../../../store/slices/search";
+import styles from "./index.module.scss";
 
 const Repositories = () => {
   const { repositories, status, order, sort } = useAppSelector(
@@ -32,33 +34,41 @@ const Repositories = () => {
   };
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
+    <div className={styles.main}>
+      <table className={styles.table}>
+        <thead className={styles.tr}>
+          <tr className={styles.tr}>
             <th>Id</th>
             <th>Name</th>
             <th>Username</th>
             <th>Description</th>
             <th onClick={() => handleSort("stars")}>
-              <span>Stars</span>
-              <FilterArrow
-                style={{ color: sort === "stars" ? "orange" : "white" }}
-              />
+              <div className={styles.thContent}>
+                <span>Stars</span>
+                <FilterArrow
+                  style={{ color: sort === "stars" ? "orange" : "white" }}
+                />
+              </div>
             </th>
             <th onClick={() => handleSort("forks")}>
-              <span>Forks</span>
-              <FilterArrow
-                style={{ color: sort === "forks" ? "orange" : "white" }}
-              />
+              <div className={styles.thContent}>
+                <span>Forks</span>
+                <FilterArrow
+                  style={{ color: sort === "forks" ? "orange" : "white" }}
+                />
+              </div>
             </th>
             <th onClick={() => handleSort("updated")}>
-              <span>Last Update</span>
-              <FilterArrow
-                style={{ color: sort === "updated" ? "orange" : "white" }}
-              />
+              <div className={styles.thContent}>
+                <span>Updated</span>
+                <FilterArrow
+                  style={{ color: sort === "updated" ? "orange" : "white" }}
+                />
+              </div>
             </th>
-            <th>actions</th>
+            <th>
+              <IconActivity />
+            </th>
           </tr>
         </thead>
         <tbody>

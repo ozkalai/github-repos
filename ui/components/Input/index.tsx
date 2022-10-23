@@ -1,5 +1,7 @@
-import debounce from "lodash/debounce";
 import React from "react";
+import debounce from "lodash/debounce";
+
+import styles from "./index.module.scss";
 
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setSearchValue } from "../../../store/slices/search";
@@ -21,6 +23,8 @@ const Input: React.FC = () => {
 
   return (
     <input
+      placeholder="Search repositories by keyword"
+      className={styles.input}
       onChange={(e) => setValue(e.target.value)}
       data-testid="input"
       value={value}

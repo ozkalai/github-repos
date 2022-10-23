@@ -3,12 +3,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
   margin: auto;
   padding: 1rem;
   color: var(--secqundary-color);
   background: #fff;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid var(--primary-color);
   @media (max-width: 768px) {
     width: 100%;
     gap: 1rem;
@@ -74,4 +74,8 @@
   font-size: small;
   cursor: pointer;
   margin-left: 1rem;
+  transition: all 0.3s ease-out;
+  &:hover {
+    scale: 1.1;
+  }
 }

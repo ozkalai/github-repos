@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { setLanguage } from "../../../store/slices/search";
+import styles from "./index.module.scss";
 
 type Option = {
   value: string;
@@ -15,12 +15,18 @@ const LanguageRadioGroup: React.FC<RadioGropProps> = ({ options }) => {
   const { selectedLanguage } = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
   return (
-    <div>
+    <div className={styles.wrapper}>
       {options.map((option) => {
         return (
-          <div key={option.value}>
+          <div
+            className={`${styles.radioGroup} ${
+              selectedLanguage === option.value ? styles.selected : ""
+            }`}
+            key={option.value}
+          >
             <label htmlFor={option.value}>
               <input
+                className={styles.radio}
                 value={option.value}
                 onChange={(e) => dispatch(setLanguage(e.target.value))}
                 type="radio"
@@ -28,6 +34,7 @@ const LanguageRadioGroup: React.FC<RadioGropProps> = ({ options }) => {
                 id={option.value}
                 checked={option.value === selectedLanguage}
               />
+              <span className={styles.space}></span>
               {option.label}
             </label>
           </div>

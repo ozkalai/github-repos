@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 
 import { useAppSelector } from "../../../store/hooks";
-import { Button } from "../Button";
 import styles from "./index.module.scss";
 import { setToken } from "../../../store/slices/auth";
 import { setUser } from "../../../store/slices/user";

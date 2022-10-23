@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.radioGroup {
+  min-width: max-content;
+  padding: 4px 6px;
+}
+
+.radio {
+  accent-color: var(--primary-color);
+  text-align: center;
+  padding: 6px;
+}
+
+.selected {
+  background-color: var(--secondary-color);
+  transition: all 0.4s ease-in-out;
+  color: var(--primary-color);
+}
+
+.space {
+  margin: 0 4px;
+}

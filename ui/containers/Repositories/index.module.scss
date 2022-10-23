@@ -1,0 +1,40 @@
+.main {
+  height: 100%;
+  padding: 2rem 1rem;
+  overflow-y: scroll;
+  table {
+    min-width: 1200px;
+    thead {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      tr {
+        th {
+          text-align: start;
+          padding: 0 4px;
+          .thContent {
+            display: flex;
+          }
+          &:last-child {
+            text-align: end;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 4px;
+          &:last-child {
+            text-align: end;
+          }
+        }
+      }
+      tr:nth-child(odd) {
+        background-color: var(--primary-color);
+        td {
+          padding: 0 4px;
+        }
+      }
+    }
+  }
+}

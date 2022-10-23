@@ -30,13 +30,12 @@ const Home: NextPage = () => {
     sort,
   } = useAppSelector((state) => state.search);
   const { replace } = useRouter();
-  // todo: manage status with redux toolkit (loading, , rejected) and display loading/error messages accordingly
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (query.token) {
       dispatch(setToken(query.token as string));
-      replace("/"); // remove token from url
+      replace("/", {});
     }
   }, [dispatch, query, replace]);
 
@@ -64,28 +63,25 @@ const Home: NextPage = () => {
   return (
     <div className={styles.main}>
       {user ? (
-        <div>
+        <div className={styles.container}>
           <Header />
-          {/* <LanguageRadioGroup
-            options={[
-              { value: "javascript", label: "Javascript" },
-              { value: "scala", label: "Scala" },
-              { value: "python", label: "Python" },
-            ]}
-          />
-          <Input />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "70%",
-              margin: "auto",
-            }}
-            className={styles.header}
-          >
-            <Repositories />
+          <div className={styles.filters}>
+            <div className={styles.radioGroup}>
+              <LanguageRadioGroup
+                options={[
+                  { value: "javascript", label: "Javascript" },
+                  { value: "scala", label: "Scala" },
+                  { value: "python", label: "Python" },
+                ]}
+              />
+            </div>
+            <div className={styles.input}>
+              <Input />
+            </div>
           </div>
-          <Pagination /> */}
+
+          <Repositories />
+          <Pagination />
         </div>
       ) : (
         <Login />
