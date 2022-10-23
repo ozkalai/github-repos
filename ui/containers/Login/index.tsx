@@ -16,7 +16,9 @@ const Login = () => {
           </div>
           <div className={styles.githubButton}>
             <IconBrandGithub size={24} />
-            <a href="https://github.com/login/oauth/authorize?client_id=b6edd25645bf0966ee4c">
+            <a
+              href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
+            >
               Sign in with GitHub
             </a>
           </div>
