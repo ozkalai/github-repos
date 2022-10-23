@@ -27,6 +27,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (query.token) {
       dispatch(setToken(query.token as string));
+      replace("/");
     }
   }, [dispatch, query, replace]);
 
