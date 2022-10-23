@@ -34,8 +34,9 @@ const Pagination = () => {
 
             <button
               onClick={() => dispatch(setPage(visiblePage))}
-              disabled={visiblePage === page}
-              className={styles.button}
+              className={`${styles.button} ${
+                visiblePage === page ? styles.active : ""
+              }`}
             >
               {visiblePage}
             </button>

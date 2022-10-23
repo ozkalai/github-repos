@@ -47,6 +47,7 @@ const Repositories = () => {
               <div className={styles.thContent}>
                 <span>Stars</span>
                 <FilterArrow
+                  size={18}
                   style={{ color: sort === "stars" ? "orange" : "white" }}
                 />
               </div>
@@ -55,7 +56,10 @@ const Repositories = () => {
               <div className={styles.thContent}>
                 <span>Forks</span>
                 <FilterArrow
-                  style={{ color: sort === "forks" ? "orange" : "white" }}
+                  size={18}
+                  style={{
+                    color: sort === "forks" ? "orange" : "white",
+                  }}
                 />
               </div>
             </th>
@@ -63,7 +67,10 @@ const Repositories = () => {
               <div className={styles.thContent}>
                 <span>Updated</span>
                 <FilterArrow
-                  style={{ color: sort === "updated" ? "orange" : "white" }}
+                  size={18}
+                  style={{
+                    color: sort === "updated" ? "orange" : "white",
+                  }}
                 />
               </div>
             </th>

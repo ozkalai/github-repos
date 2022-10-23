@@ -1,13 +1,13 @@
 .main {
   display: flex;
-  gap: 1rem;
+  gap: 0.4rem;
   padding: 1rem 1rem 3rem 1rem;
   justify-content: flex-end;
 }
 
 .buttonWrapper {
   display: flex;
-  gap: 1rem;
+  gap: 0.4rem;
   align-items: center;
   justify-content: center;
 }
@@ -35,6 +35,7 @@
 
 .select {
   padding: 0.3rem 0.7rem;
+  margin-left: 0.5rem;
   border-radius: 0.5rem;
   border: none;
   border: 1px solid var(--secondary-color);
@@ -43,11 +44,12 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
   &:hover {
     border-color: var(--secondary-color);
   }
+}
+
+.active {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
