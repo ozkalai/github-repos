@@ -27,7 +27,6 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (query.token) {
       dispatch(setToken(query.token as string));
-      replace("/", {});
     }
   }, [dispatch, query, replace]);
 
@@ -54,7 +53,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.main}>
-      {user ? (
+      {token ? (
         <div className={styles.wrapper}>
           <div className={styles.container}>
             <Header />
