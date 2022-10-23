@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
+import { IconLogout } from "@tabler/icons";
 
 import { useAppSelector } from "../../../store/hooks";
-import styles from "./index.module.scss";
 import { setToken } from "../../../store/slices/auth";
 import { setUser } from "../../../store/slices/user";
-import { IconLogout } from "@tabler/icons";
+import styles from "./index.module.scss";
 
 const Header = () => {
   const { user } = useAppSelector((state) => state.user);

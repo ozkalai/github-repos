@@ -6,6 +6,7 @@ import {
   IconActivity,
 } from "@tabler/icons";
 import dayjs from "dayjs";
+
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setSort, setOrder } from "../../../store/slices/search";
 import styles from "./index.module.scss";

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import styles from "./index.module.scss";
 import { IconBrandGithub } from "@tabler/icons";
+
+import styles from "./index.module.scss";
 
 const Login = () => {
   return (

@@ -1,34 +1,9 @@
-// test pagination component with jest
-// Path: ui\components\Pagination\index.spec.tsx
-
 import React from "react";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
+
 import { renderWithProviders as render } from "../../../utils/tests-utils";
 import Pagination from "./index";
-
-const thunkMiddleware =
-  ({ dispatch, getState }: any) =>
-  (next: (arg0: any) => any) =>
-  (action: (arg0: any, arg1: any) => any) => {
-    if (typeof action === "function") {
-      return action(dispatch, getState);
-    }
-
-    return next(action);
-  };
-
-const create = () => {
-  const store = {
-    getState: jest.fn(() => ({})),
-    dispatch: jest.fn(),
-  };
-  const next = jest.fn();
-
-  const invoke = (action: any) => thunkMiddleware(store)(next)(action);
-
-  return { store, next, invoke };
-};
 
 describe("Pagination", () => {
   test("renders without crash", () => {
