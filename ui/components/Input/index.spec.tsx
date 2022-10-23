@@ -1,29 +1,35 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
+import { renderWithProviders as render } from "../../../utils/tests-utils";
 import Input from "./index";
 
 describe("Input", () => {
   test("renders without crash", () => {
-    render(<Input onChange={() => 0} />);
+    render(<Input />);
   });
 
-  test("renders with label", () => {
-    render(<Input label="test label" value="test value" onChange={() => 0} />);
-    const label = screen.getByText(/test label/i);
-    expect(label).toHaveTextContent("test label");
-  });
-
-  test("renders with html for", () => {
-    render(<Input label="test label" name="password" onChange={() => 0} />);
-    const label = screen.getByTestId("label");
-    expect(label).toHaveAttribute("for", "password");
-  });
-
-  test("renders with type", () => {
-    render(<Input type="password" onChange={() => 0} />);
+  test("should set the value when input chages", () => {
+    render(<Input />);
     const input = screen.getByTestId("input");
-    expect(input).toHaveAttribute("type", "password");
+    expect(input).toHaveValue("");
+    fireEvent.change(input, "a");
+    // wait for debounce to finish
+    expect(input).not.toHaveValue("a");
+    waitFor(() => {
+      expect(input).toHaveValue("a");
+    });
+  });
+
+  test("should set the seach value when input chages", () => {
+    render(<Input />);
+    const input = screen.getByTestId("input");
+    expect(input).toHaveValue("");
+    fireEvent.change(input, "a");
+    expect(input).not.toHaveValue("a");
+    waitFor(() => {
+      expect(input).toHaveValue("a");
+    });
   });
 });

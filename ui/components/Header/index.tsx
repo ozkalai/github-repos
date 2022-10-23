@@ -1,42 +1,52 @@
 import { useDispatch } from "react-redux";
-import Image from "next/image";
-import { useRouter } from "next/router";
 
 import { useAppSelector } from "../../../store/hooks";
 import { Button } from "../Button";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 import { setToken } from "../../../store/slices/auth";
 import { setUser } from "../../../store/slices/user";
+import { IconLogout } from "@tabler/icons";
 
 const Header = () => {
   const { user } = useAppSelector((state) => state.user);
   const dispatch = useDispatch();
-  const { replace } = useRouter();
   return (
     <header className={styles.header}>
+      <span className={styles.logo}>Repo Search</span>
       <div className={styles.user}>
-        <div className={styles.imageWrapper}>
-          <Image alt="avatar" src={user?.avatar_url || ""} layout="fill" />
+        <div className={styles.userWrapper}>
+          <div className={styles.imageWrapper}>
+            <img
+              className={styles.image}
+              alt="avatar"
+              src={user?.avatar_url || ""}
+            />
+          </div>
+          <div className={styles.userInfo}>
+            <span className={styles.userInfoName}>{user?.name}</span>
+            <a
+              className={styles.userInfoLogin}
+              rel="noreferrer"
+              target="_blank"
+              href={user?.html_url}
+            >
+              @{user?.login}
+            </a>
+          </div>
         </div>
-        <div>
-          <h3>{user?.name}</h3>
-          <a rel="noreferrer" target="_blank" href={user?.html_url}>
-            @{user?.login}
-          </a>
-        </div>
+        {user && (
+          <div className={styles.logout}>
+            <div
+              onClick={() => {
+                dispatch(setToken(undefined));
+                dispatch(setUser(null));
+              }}
+            >
+              <IconLogout />
+            </div>
+          </div>
+        )}
       </div>
-      {user && (
-        <div className={styles.button}>
-          <Button
-            onClick={() => {
-              dispatch(setToken(undefined));
-              dispatch(setUser(null));
-            }}
-          >
-            Logout
-          </Button>
-        </div>
-      )}
     </header>
   );
 };

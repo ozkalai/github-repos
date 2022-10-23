@@ -15,7 +15,7 @@ export interface SearchState {
 }
 
 const initialState: SearchState = {
-  page: 5,
+  page: 1,
   perPage: 20,
   order: "desc",
   repositories: undefined,

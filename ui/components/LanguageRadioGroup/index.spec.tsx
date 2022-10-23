@@ -1,4 +1,4 @@
-import { renderWithProviders as render } from "../../../tests/tests-utils";
+import { renderWithProviders as render } from "../../../utils/tests-utils";
 import { screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 

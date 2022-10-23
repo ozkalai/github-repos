@@ -22,41 +22,38 @@ const Pagination = () => {
   }
 
   return (
-    <div>
+    <div key={2}>
       <div>
-        <select onChange={(e) => dispatch(setPerPage(Number(e.target.value)))}>
+        <select
+          value={perPage}
+          data-testid="select-testid"
+          onChange={(e) => dispatch(setPerPage(Number(e.target.value)))}
+        >
           {[10, 20, 50, 100].map((option) => {
             return (
-              <option key={option} value={option} selected={option === perPage}>
+              <option key={option} value={option}>
                 {option}
               </option>
             );
           })}
         </select>
       </div>
-      <div>
-        {visiblePages.map((visiblePage, index) => {
-          // add ellipsis  if there is a gap between pages
+      {visiblePages.map((visiblePage, index) => {
+        return (
+          <div key={visiblePage}>
+            {index > 0 && visiblePage - visiblePages[index - 1] > 1 && (
+              <span style={{ margin: "0 0.5rem" }}>...</span>
+            )}
 
-          return (
-            <>
-              {index > 0 && visiblePage - visiblePages[index - 1] > 1 && (
-                <span key={visiblePage} style={{ margin: "0 0.5rem" }}>
-                  ...
-                </span>
-              )}
-
-              <button
-                key={index}
-                onClick={() => dispatch(setPage(visiblePage))}
-                disabled={visiblePage === page}
-              >
-                {visiblePage}
-              </button>
-            </>
-          );
-        })}
-      </div>
+            <button
+              onClick={() => dispatch(setPage(visiblePage))}
+              disabled={visiblePage === page}
+            >
+              {visiblePage}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 };

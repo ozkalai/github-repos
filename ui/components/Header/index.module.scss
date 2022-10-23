@@ -1,0 +1,77 @@
+.header {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  padding: 1rem;
+  color: var(--secqundary-color);
+  background: #fff;
+  border-radius: 0.5rem 0.5rem 0 0;
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 1rem;
+    flex-direction: column;
+  }
+}
+
+.logo {
+  font-size: x-large;
+  font-weight: bold;
+  letter-spacing: -1px;
+  @media screen and (max-width: 1000px) {
+    font-size: large;
+  }
+}
+
+.userWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: start;
+  &Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    &Name {
+      font-size: large;
+      font-weight: bold;
+    }
+    &Login {
+      font-size: small;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
+
+.imageWrapper {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logout {
+  font-size: small;
+  cursor: pointer;
+  margin-left: 1rem;
+}

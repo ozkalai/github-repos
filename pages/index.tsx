@@ -6,14 +6,9 @@ import { setToken, getToken } from "../store/slices/auth";
 
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { fetchUserData } from "../store/slices/user";
-import {
-  setLanguage,
-  setSearchValue,
-  setPerPage,
-} from "../store/slices/search";
 import Login from "../ui/containers/Login";
 import Header from "../ui/components/Header";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import { fetchRepositories } from "../store/slices/search";
 import LanguageRadioGroup from "../ui/components/LanguageRadioGroup";
 import Pagination from "../ui/components/Pagination";
@@ -67,11 +62,11 @@ const Home: NextPage = () => {
   ]);
 
   return (
-    <div>
+    <div className={styles.main}>
       {user ? (
         <div>
           <Header />
-          <LanguageRadioGroup
+          {/* <LanguageRadioGroup
             options={[
               { value: "javascript", label: "Javascript" },
               { value: "scala", label: "Scala" },
@@ -90,7 +85,7 @@ const Home: NextPage = () => {
           >
             <Repositories />
           </div>
-          <Pagination />
+          <Pagination /> */}
         </div>
       ) : (
         <Login />
@@ -98,26 +93,5 @@ const Home: NextPage = () => {
     </div>
   );
 };
-
-// if (status === "loading") {
-//   return <div>Loading...</div>;
-// } else if (status === "failed") {
-//   return <div>Error</div>;
-// } else {
-//   return (
-//     <div className={styles.container}>
-//       <main className={styles.main}>
-//         {user && <h1 className={styles.title}>Welcome {user.name}!</h1>}
-//         {user ? (
-//           <button onClick={() => dispatch(removeToken())}>Logout</button>
-//         ) : (
-//           <a href="https://github.com/login/oauth/authorize?client_id=b6edd25645bf0966ee4c">
-//             Login
-//           </a>
-//         )}
-//       </main>
-//     </div>
-//   );
-// }
 
 export default Home;
