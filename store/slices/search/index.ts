@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
 import type { RootState } from "../../store";
 import { IRepositories } from "./types";
-import axios from "axios";
 
 export interface SearchState {
   repositories: IRepositories | undefined;

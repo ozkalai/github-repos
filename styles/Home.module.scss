@@ -1,20 +1,31 @@
 .main {
   background-color: var(--primary-color);
   height: 100%;
+  min-height: 100vh;
+}
+
+.wrapper {
   padding: 2rem 0;
+  @media screen and (max-width: 765px) {
+    padding: 0;
+  }
 }
 
 .container {
   width: 70%;
   margin: auto;
   background-color: white;
-  border-radius: 1rem;
+  border-radius: 8px;
   padding: 0 1rem;
-  @media (max-width: 768px) {
-    width: 100%;
+  @media (max-width: 1000px) {
+    width: 90%;
     border-radius: 0;
   }
+  @media (max-width: 765px) {
+    width: 100%;
+  }
 }
+
 .filters {
   display: flex;
   justify-content: space-between;

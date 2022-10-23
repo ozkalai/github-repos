@@ -1,6 +1,8 @@
 import React from "react";
+
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setPerPage, setPage } from "../../../store/slices/search";
+import styles from "./index.module.scss";
 
 const Pagination = () => {
   const { page, perPage, repositories } = useAppSelector(
@@ -22,9 +24,27 @@ const Pagination = () => {
   }
 
   return (
-    <div key={2}>
+    <div className={styles.main}>
+      {visiblePages.map((visiblePage, index) => {
+        return (
+          <div className={styles.buttonWrapper} key={visiblePage}>
+            {index > 0 && visiblePage - visiblePages[index - 1] > 1 && (
+              <span>...</span>
+            )}
+
+            <button
+              onClick={() => dispatch(setPage(visiblePage))}
+              disabled={visiblePage === page}
+              className={styles.button}
+            >
+              {visiblePage}
+            </button>
+          </div>
+        );
+      })}
       <div>
         <select
+          className={styles.select}
           value={perPage}
           data-testid="select-testid"
           onChange={(e) => dispatch(setPerPage(Number(e.target.value)))}
@@ -38,22 +58,6 @@ const Pagination = () => {
           })}
         </select>
       </div>
-      {visiblePages.map((visiblePage, index) => {
-        return (
-          <div key={visiblePage}>
-            {index > 0 && visiblePage - visiblePages[index - 1] > 1 && (
-              <span style={{ margin: "0 0.5rem" }}>...</span>
-            )}
-
-            <button
-              onClick={() => dispatch(setPage(visiblePage))}
-              disabled={visiblePage === page}
-            >
-              {visiblePage}
-            </button>
-          </div>
-        );
-      })}
     </div>
   );
 };
