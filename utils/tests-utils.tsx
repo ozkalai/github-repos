@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { render } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, Store } from "@reduxjs/toolkit";
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
@@ -12,7 +12,7 @@ import searchReducer from "../store/slices/search";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
-  store?: AppStore;
+  store?: Store;
 }
 
 export function renderWithProviders(
@@ -25,7 +25,6 @@ export function renderWithProviders(
         user: userReducer,
         search: searchReducer,
       },
-
       preloadedState,
     }),
     ...renderOptions
