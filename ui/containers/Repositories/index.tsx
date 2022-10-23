@@ -36,7 +36,7 @@ const Repositories = () => {
 
   return (
     <div className={styles.main}>
-      <table className={styles.table}>
+      <table className={`${status === "loading" ? styles.opacity : ""}`}>
         <thead className={styles.tr}>
           <tr className={styles.tr}>
             <th>Id</th>
